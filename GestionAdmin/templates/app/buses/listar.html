@@ -1,0 +1,43 @@
+{% extends 'app/base.html'%}
+
+{% block contenido %}
+        <div class="main_content">
+            <hr>
+            <div class="header"><h1>Lista de Buses</h1></div>
+            <hr>
+            <div class="info">
+                <div id="main-container">
+                    {% block content %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Placa</th>
+                                <th>Capacidad</th>
+                                <th>Cooperativa</th>
+                                <th>Tipo</th>
+                                <th>Tarjeta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% if buses %}
+                            {% for bus in buses%}
+                            <tr>
+                                <td>{{bus.placa}}</td>
+                                <td>{{bus.capacidad}}</td>
+                                <td>{{bus.cooperativa}}</td>
+                                <td>{{bus.tipo}}</td>
+                                <td>{{bus.idTarjeta}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <h3>No hay registros</h3>
+                            <br>
+                            {% endif%}
+                        </tbody>
+                    </table>
+                    {% endblock  %}
+                </div>
+            </div>   
+        </div>
+{% endblock %}

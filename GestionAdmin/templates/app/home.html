@@ -1,0 +1,38 @@
+{% extends 'app/base.html'%}
+
+{% block contenido %}
+
+{% load static %}
+<h1>Home</h1>
+
+
+<div class="cards">
+        <div class="card card1">
+            <div class="container">
+                <img src='{% static "img/las vegas.jpg" %}' alt="Services">
+            </div>
+            <div class="details">
+                <h3>Services</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
+            </div>
+        </div>
+        <div class="card card2">
+            <div class="container">
+                <img src='{% static "img/newyork.jpg" %}' alt="About">
+            </div>
+            <div class="details">
+                <h3>About</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
+            </div>
+        </div>
+        <div class="card card3">
+            <div class="container">
+                <img src='{% static "img/Singapore.jpg" %}' alt="Contact">
+            </div>
+            <div class="details">
+                <h3>Contact</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

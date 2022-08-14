@@ -1,0 +1,36 @@
+{% extends 'app/base.html'%}
+
+{% block contenido %}
+{% load static %}
+<h1>About</h1>
+
+<div class="cards">
+        <div class="card card1">
+            <div class="container">
+                <img src='{% static "img/imgAbout/desarrolloweb.png" %}' alt="Services">
+            </div>
+            <div class="details">
+                <h3>Web Developer</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
+            </div>
+        </div>
+        <div class="card card2">
+            <div class="container">
+                <img src='{% static "img/imgAbout/diseño.jpg" %}' alt="About">
+            </div>
+            <div class="details">
+                <h3>Web Designer</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
+            </div>
+        </div>
+        <div class="card card3">
+            <div class="container">
+                <img src='{% static "img/imgAbout/desarrolloweb.png" %}' alt="Contact">
+            </div>
+            <div class="details">
+                <h3>Web others</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

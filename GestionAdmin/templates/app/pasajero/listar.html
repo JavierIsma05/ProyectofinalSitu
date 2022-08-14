@@ -1,0 +1,47 @@
+{% extends 'app/base.html'%}
+
+{% block contenido %}
+        <div class="main_content">
+            <hr>
+            <div class="header"><h1>Lista de Pasajeros</h1></div>
+            <hr>
+            <div class="info">
+                <div id="main-container">
+                    <form>
+                        <input id="txtBusqueda" placeholder="Buscar datos" type="text" onkeyup="Buscar();" /></form>
+                    </form>
+
+                    {% block content %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Email</th>
+                                <th>Edad</th>
+                                <th>Sexo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            {% if pasajeros %}
+                            {% for pasajero in pasajeros%}
+                            <tr>
+                                <td>{{pasajero.nombre}}</td>
+                                <td>{{pasajero.apellido}}</td>
+                                <td>{{pasajero.email}}</td>
+                                <td>{{pasajero.edad}}</td>
+                                <td>{{pasajero.sexo}}</td>                                
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <h3>No hay registros</h3>
+                            <br>
+                            {% endif%}
+                        </tbody>
+                    </table>
+                    {% endblock  %}
+                </div>
+            </div>   
+        </div>
+{% endblock %}
