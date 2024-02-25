@@ -1,36 +1,25 @@
 {% extends 'app/base.html'%}
 
-{% block contenido %}
+{% block body %}
 {% load static %}
-<h1>About</h1>
-
-<div class="cards">
-        <div class="card card1">
-            <div class="container">
-                <img src='{% static "img/imgAbout/desarrolloweb.png" %}' alt="Services">
-            </div>
-            <div class="details">
-                <h3>Web Developer</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
-            </div>
+<!-- Contenido de la página -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="display-4">Acerca de Nosotros</h1>
+            <p class="lead">Tu Compañía es una empresa dedicada a proporcionar soluciones de transporte
+                innovadoras y confiables. Con años de experiencia, nos enorgullece ofrecer servicios de alta
+                calidad que satisfacen las necesidades de nuestros clientes.</p>
+            <p>En Tu Compañía, nos esforzamos por la excelencia en cada viaje. Nuestra flota de autobuses
+                modernos y conductores capacitados garantizan una experiencia segura y cómoda para todos
+                nuestros pasajeros.</p>
         </div>
-        <div class="card card2">
-            <div class="container">
-                <img src='{% static "img/imgAbout/diseño.jpg" %}' alt="About">
-            </div>
-            <div class="details">
-                <h3>Web Designer</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
-            </div>
-        </div>
-        <div class="card card3">
-            <div class="container">
-                <img src='{% static "img/imgAbout/desarrolloweb.png" %}' alt="Contact">
-            </div>
-            <div class="details">
-                <h3>Web others</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
-            </div>
+        <div class="col-lg-6">
+            <img src="{% static 'img/logositu.png' %}" alt="Imagen de la Empresa" class="img-fluid rounded">
         </div>
     </div>
+</div>
+
+
+
 {% endblock %}

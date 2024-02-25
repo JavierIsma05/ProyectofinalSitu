@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os 
 
 from pathlib import Path
 
@@ -24,9 +25,9 @@ SECRET_KEY = 'django-insecure-zno4gw0hfinso6l1co6lcm1+=amew%i!xm=3n@(f+kqdyjoi(!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = []
-
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL  ='/'
@@ -47,12 +48,7 @@ INSTALLED_APPS = [
     'GestionAdmin.apps.GestionadminConfig', #add this
     'colorfield',
     'crispy_forms',
-    'rest_framework',
-    'api.apps.ApiConfig',
-
     'social_django', #add this
-
-
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -64,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -142,6 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'GestionAdmin/static/'),)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -151,7 +148,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #social app custom settings
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
@@ -159,25 +155,8 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = "839760810337870"
-SOCIAL_AUTH_FACEBOOK_SECRET = "a55b2aaf8560038183b9f40040279615"
-
-#SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '409264364023-jq9t65bcctptaici4j8f76memv1omab0.apps.googleusercontent.com'
-#SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1000352677482-qjrc0v283mi7mg0apjumn1cnjq4bad8d.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link'] 
 
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {  
-  'fields': 'id, name, email, picture.type(large), link'
-}
-
-
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [               
-    ('name', 'name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('link', 'profile_url'),
-]

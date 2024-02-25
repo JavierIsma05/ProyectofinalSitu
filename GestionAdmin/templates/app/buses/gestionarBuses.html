@@ -1,0 +1,65 @@
+{% extends 'app/base.html'%}
+{% block title %} Gestion de Buses {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Gestión de Buses</h2>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-body">
+                    <form action="/registrarBus/" method="POST">{% csrf_token %}
+
+                        <div class="form-group py-2">
+                            <input type="text" id="txtPlaca" name="txtPlaca" class="form-control" placeholder="Placa"
+                                minlength="1" maxlength="6" required>
+                        </div>
+                        <div class="form-group py-2">
+                            <input type="text" id="txtModelo" name="txtModelo" class="form-control" placeholder="Modelo"
+                                minlength="1" maxlength="6" required>
+                        </div>
+                        <div class="form-group py-2">
+                            <input type="number" id="txtCapacidad" name="txtCapacidad" class="form-control"
+                                placeholder="Capacidad" required>
+                        </div>
+                        <div class="form-group py-2">
+                            <button type="submit" class="btn btn-success text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>Listado de Buses</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Capacidad</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in entity %}
+                    <tr>
+                        <td>{{b.placa}}</td>
+                        <td>{{b.modelo}}</td>
+                        <td>{{b.capacidad_pasajeros}}</td>
+                        <td><a href="/edicionBus/{{b.placa}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="/eliminarBus/{{b.placa}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+            <div>
+                {% include 'app/paginator.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

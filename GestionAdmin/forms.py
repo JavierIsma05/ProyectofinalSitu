@@ -2,6 +2,7 @@ from dataclasses import fields
 from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class ViajeForm(forms.ModelForm):
     class Meta:
@@ -16,7 +17,7 @@ class BusForm(forms.ModelForm):
 
 class TarjetaForm(forms.ModelForm):
     class Meta:
-        model = Tarjeta
+        model = TarjetaTransporte
         fields = '__all__'
         
 class PasajeroForm(forms.ModelForm):
@@ -24,10 +25,7 @@ class PasajeroForm(forms.ModelForm):
         model = Pasajero
         fields = '__all__'
 
-class SimuladorForm(forms.ModelForm):
-    class Meta:
-        model = AccesoPago
-        fields = '__all__'
-
 class CustomUserCreationForm(UserCreationForm):
-    pass
+    class Meta:
+        model = User
+        fields = ['username',"first_name","last_name","email","password1","password2"]

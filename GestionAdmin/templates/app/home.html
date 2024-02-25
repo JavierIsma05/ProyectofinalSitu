@@ -1,38 +1,63 @@
 {% extends 'app/base.html'%}
-
-{% block contenido %}
-
+{% block title %}SITU | LOJA{% endblock %}
+{% block body %}
 {% load static %}
-<h1>Home</h1>
-
-
-<div class="cards">
-        <div class="card card1">
-            <div class="container">
-                <img src='{% static "img/las vegas.jpg" %}' alt="Services">
-            </div>
-            <div class="details">
-                <h3>Services</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
-            </div>
+<div class="container mt-4">
+    <div class="row">
+        <!-- Columna para la imagen -->
+        <div class="col-md-6">
+            <img class="img-fluid" alt="Imagen" src="{% static 'img/logo.jpeg' %}">
         </div>
-        <div class="card card2">
-            <div class="container">
-                <img src='{% static "img/newyork.jpg" %}' alt="About">
-            </div>
-            <div class="details">
-                <h3>About</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
-            </div>
-        </div>
-        <div class="card card3">
-            <div class="container">
-                <img src='{% static "img/Singapore.jpg" %}' alt="Contact">
-            </div>
-            <div class="details">
-                <h3>Contact</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dignissimos, minus aperiam adipisci exercitationem.</p>
-            </div>
+        <!-- Columna para la descripción -->
+        <div class="col-md-6">
+            <h2 class="mt-5">Bienvenidos</h2>
+            <p>
+                ¡Bienvenido a nuestro servicio de transporte de buses con tarjetas inteligentes!
+
+                En [Nombre de la Compañía], nos enorgullece ofrecer una experiencia de viaje moderna, eficiente y cómoda
+                a través de nuestro servicio de transporte en autobuses. Sabemos que tu tiempo es valioso, por lo que
+                hemos diseñado un sistema de transporte que se adapta a tu estilo de vida y te brinda la flexibilidad
+                que necesitas.
+
+                Viajes Sin Complicaciones
+                Nuestros autobuses están equipados con las últimas tecnologías para garantizar un viaje sin
+                complicaciones.
+            </p>
         </div>
     </div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="container">
+            <img src='{% static "img/bus.jpg" %}' alt="Services">
+        </div>
+        <div class="details">
+            <h3>Buses verde</h3>
+            <p class="card-text">Descripción corta de la Card 1.</p>
+            <a href="#" class="btn btn-primary">Leer más</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="container">
+            <img src='{% static "img/tarjetas.jpg" %}' alt="About">
+        </div>
+        <div class="details">
+            <h3>Tarjetas</h3>
+            <p class="card-text">Descripción corta de la Card 2.</p>
+            <a href="#" class="btn btn-primary">Leer más</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="container">
+            <img src='{% static "img/busr.jpg" %}' alt="Contact">
+        </div>
+        <div class="details">
+            <h3>Buses Rojos</h3>
+            <p class="card-text">Descripción corta de la Card 3.</p>
+            <a href="#" class="btn btn-primary">Leer más</a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

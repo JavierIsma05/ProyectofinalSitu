@@ -2,14 +2,25 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-	path('', home_view, name= 'home'),
-	path('pasajero/',pasajero_view, name='pasajero'),
-	path('bus/',buses_view, name='bus'),
 	
+	path('', home_view, name= 'home'),
 	path('about/', about_view, name = 'about'),
-	path('agregar-pasajero/', agregar_pasajero, name = 'agregar_pasajero'),
-	path('agregar-bus/',agregar_bus, name='agregar_bus'),
-	path('contact/',contact_view,name='contact'),
+    
+	#BUSES
+    path('buses/', buses, name='buses'),
+    path('registrarBus/', registrarBus, name='registrarBus'),
+    path('edicionBus/<placa>', edicionBus, name='edicionBus'),
+    path('eliminarBus/<placa>', eliminarBus, name='eliminarDocente'),
+    path('editarBus/', editarBus, name='editarBus'),
+	
+	#PASAJEROS
+	path('pasajeros/',pasajeros,name='pasajeros'),
+	path('registrarPasajero/',registrarPasajero,name='registrarPasajero'),
+	path('edicionPasajero/<codigo>',edicionPasajero,name='edicionPasajero'),
+	path('editarPasajero/<codigo>/',editarPasajero,name='editarPasajero'),
+    
+
 	path('registro/',registro,name='registro'),
+	
 
 ]
