@@ -1,22 +1,31 @@
-name: Main CI Pipeline
+name: Main Pipeline
 
 on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
-#otorgar permisos
-permissions:
-  contents: read
-  issues: read
-  checks: write
-  pull-requests: write
-  actions: read
-  security-events: write
-  packages: write
+  workflow_dispatch:  # Se puede lanzar manualmente
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+
   build:
-    name: Build
-    secrets: inherit: .github/workflows/build.yml
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run migrations
+        run: python manage.py migrate
+      - name: Run tests
+        run: python manage.py test
