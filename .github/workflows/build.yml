@@ -1,34 +1,25 @@
-name: Testing strategy matrix in github actions
+name: Build Workflow
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_call:
+    secrets:
+      DJANGO_SECRET_KEY:
+        required: true
 
 jobs:
-  python_tests:
+  build:
     runs-on: ubuntu-latest
-    continue-on-error: True
-    strategy:
-      matrix:
-        python-version: [3.10]
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-
+          python-version: '3.10'
       - name: Install dependencies
-        # Installing wheel package will slightly speed-up installing dependencies.
-        # Installing the package with "[dev]" flag  will install test dependecies as well,
-        # enabling us to run pytest.
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install wheel
-          pip install .[dev]
-
-
+        run: pip install -r requirements.txt
+      - name: Run migrations
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+        run: python manage.py migrate
+      - name: Run tests
+        run: python manage.py test
